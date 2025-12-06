@@ -3,7 +3,7 @@ import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext"; 
 
 export default function OrderSheetPage() {
-  const { cartItems, clearCart } = useCart();
+  const { cartItems } = useCart();
   const { isLoggedIn } = useAuth();
   const [address, setAddress] = useState({
     zipCode: "",

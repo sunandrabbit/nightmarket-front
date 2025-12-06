@@ -79,7 +79,7 @@ export const CartProvider = ({ children }) => {
 
   // 수량 변경
   const updateQuantity = async (shoppingBasketId, newQty) => {
-    if (newQty == 0) await removeFromCart(shoppingBasketId);
+    if (newQty === 0) await removeFromCart(shoppingBasketId);
 
     if (newQty < 0) return;
 

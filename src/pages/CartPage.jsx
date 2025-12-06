@@ -14,7 +14,7 @@ export default function CartPage() {
       alert("로그인이 필요합니다.")
       navigate("/");
     }
-  }, []);
+  }, [isLoggedIn, navigate]);
 
 
   // 총 금액 계산

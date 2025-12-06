@@ -38,15 +38,15 @@ export default function ProductDetailPage() {
     .map((opt) => opt.name)
     .join(" + ");
 
-  const makeSelectedOptionsKey = (selectedOptions) => {
-    const map = Object.keys(selectedOptions)
-      .sort()
-      .reduce((acc, k) => {
-        acc[k] = selectedOptions[k].optionValueId;
-        return acc;
-      }, {});
-    return JSON.stringify(map);
-  };  
+  // const makeSelectedOptionsKey = (selectedOptions) => {
+  //   const map = Object.keys(selectedOptions)
+  //     .sort()
+  //     .reduce((acc, k) => {
+  //       acc[k] = selectedOptions[k].optionValueId;
+  //       return acc;
+  //     }, {});
+  //   return JSON.stringify(map);
+  // };  
 
   const handleAddToCart = () => {
     if (!Object.keys(selectedOptions).length) {

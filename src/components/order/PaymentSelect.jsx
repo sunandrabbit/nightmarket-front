@@ -1,5 +1,4 @@
 // src/components/order/PaymentSelect.jsx
-import React from "react";
 
 export default function PaymentSelect({ value, onChange }) {
   return (

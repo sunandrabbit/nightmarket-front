@@ -6,6 +6,11 @@ export default function ProductsPage() {
   const [pageInfo, setPageInfo] = useState({ currentPage: 1, totalPage: 1 });
   const [searchKeyword, setSearchKeyword] = useState(""); 
 
+  const API_BASE_URL =
+    process.env.NODE_ENV === "production"
+      ? "https://item.syua-test.duckdns.org"
+      : "http://localhost:10030";
+
   const mockProducts = [
     {
       id: 1,
@@ -72,7 +77,7 @@ export default function ProductsPage() {
   const fetchProducts = async (keyword = "") => {
     try {
       const res = await fetch(
-        `http://localhost:10030/api/v1/posts/search?keyword=${keyword}&page=${pageInfo.currentPage - 1}`
+        `${API_BASE_URL}/api/v1/posts/search?keyword=${keyword}&page=${pageInfo.currentPage - 1}`
       );
       if (res.ok) {
         const data = await res.json();

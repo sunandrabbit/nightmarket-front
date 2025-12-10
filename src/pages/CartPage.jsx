@@ -16,6 +16,11 @@ export default function CartPage() {
     }
   }, [isLoggedIn, navigate]);
 
+  const API_BASE_URL =
+    process.env.NODE_ENV === "production"
+      ? "https://item.syua-test.duckdns.org"
+      : "http://localhost:10030";
+
 
   // 총 금액 계산
   const totalPrice = cartItems.reduce(
@@ -32,7 +37,7 @@ export default function CartPage() {
         })),
       };
 
-      const response = await fetch("http://localhost:10030/api/v1/cart/check", {
+      const response = await fetch(`${API_BASE_URL}/api/v1/cart/check`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

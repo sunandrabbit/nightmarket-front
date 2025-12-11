@@ -15,7 +15,7 @@ export default function OrderSheetPage() {
 
   const API_BASE_URL =
     process.env.NODE_ENV === "production"
-      ? "https://order.syua-test.duckdns.org"
+      ? "https://order.syua.co.kr"
       : "http://localhost:10050";
 
   const handleChange = (e) => {

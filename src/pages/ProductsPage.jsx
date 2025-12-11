@@ -8,7 +8,7 @@ export default function ProductsPage() {
 
   const API_BASE_URL =
     process.env.NODE_ENV === "production"
-      ? "https://item.syua-test.duckdns.org"
+      ? "https://item.syua.co.kr"
       : "http://localhost:10030";
 
   const mockProducts = [

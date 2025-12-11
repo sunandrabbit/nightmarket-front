@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
 
   const API_BASE_URL =
     process.env.NODE_ENV === "production"
-      ? "https://user.syua-test.duckdns.org"
+      ? "https://user.syua.co.kr"
       : "http://localhost:8080";
   
   useEffect(() => {

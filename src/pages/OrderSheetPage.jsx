@@ -57,25 +57,29 @@ export default function OrderSheetPage() {
         body: JSON.stringify(orderRequest),
       });
 
-      if (response.status === 200) {
+      const json = await response.json();
+
+      const shortageIds = json.insufficientProductList;
+
+      if (shortageIds.length === 0) {
         setMessage("주문이 성공적으로 접수되었습니다!");
+        return;
+      }else{
+        const shortageItems = shortageIds
+        .map((id) =>
+          cartItems.find((item) => item.productVariantId === id)
+        )
+        .filter(Boolean);
+
+        const message = shortageItems
+          .map((item) => `• ${item.name}`)
+          .join("\n");
+
+        alert(`다음 상품의 재고가 부족합니다:\n\n${message}`);
       }
+      
     } catch (error) {
       console.error(error);
-
-      //재고 부족 등 서버에서 400 에러 응답 시
-      if (error.response?.status === 400) {
-        const body = error.response?.data; // ex) "uuid1\nuuid2\nuuid3"
-        const insufficientItems = body.split("\n").filter(Boolean);
-
-        const missingNames = cartItems
-          .filter((item) => insufficientItems.includes(item.productVariantId))
-          .map((item) => item.productName);
-
-        alert(`재고 부족: ${missingNames.join(", ")}`);
-      } else {
-        alert("주문 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-      }
     } finally {
       setLoading(false);
     }

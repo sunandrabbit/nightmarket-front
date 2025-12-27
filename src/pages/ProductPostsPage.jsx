@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProductCard from "../components/ProductCard";
+import ProductPostCard from "../components/ProductPostCard";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -129,7 +129,7 @@ export default function ProductsPage() {
       {/* 상품 목록 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductPostCard key={product.id} product={product} />
         ))}
       </div>
 
